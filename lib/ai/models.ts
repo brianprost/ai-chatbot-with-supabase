@@ -4,6 +4,7 @@
 export enum ModelProvider {
   OpenAI = 'openai',
   Bedrock = 'bedrock',
+  Groq = 'groq',
 }
 
 /**
@@ -34,9 +35,17 @@ export interface BedrockModel extends BaseModel {
 }
 
 /**
+ * Type for Groq-specific models
+ */
+export interface GroqModel extends BaseModel {
+  readonly provider: ModelProvider.Groq;
+  readonly id: string;
+}
+
+/**
  * Union type for all supported models
  */
-export type Model = OpenAIModel | BedrockModel;
+export type Model = OpenAIModel | BedrockModel | GroqModel;
 
 /**
  * Type guard to check if a model is an OpenAI model
@@ -50,6 +59,10 @@ export const isOpenAIModel = (model: Model): model is OpenAIModel => {
  */
 export const isBedrockModel = (model: Model): model is BedrockModel => {
   return model.provider === ModelProvider.Bedrock;
+};
+
+export const isGroqModel = (model: Model): model is GroqModel => {
+  return model.provider === ModelProvider.Groq;
 };
 
 export const models = [
@@ -88,6 +101,13 @@ export const models = [
     description: 'For outsmarting select humans',
     provider: ModelProvider.Bedrock,
   },
+  {
+    id: 'llama-3.3-70b-specdec',
+    label: 'Llama 3.3 70B',
+    apiIdentifier: 'llama-3.3-70b-specdec',
+    description: 'Fucking fast',
+    provider: ModelProvider.Groq,
+  }
 ] as const;
 
 /**

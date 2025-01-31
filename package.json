@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@ai-sdk/amazon-bedrock": "^1.0.19",
+    "@ai-sdk/groq": "^1.1.6",
     "@ai-sdk/openai": "1.0.19",
     "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/lang-python": "^6.1.6",
@@ -99,5 +100,13 @@
     "tailwindcss": "^3.4.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild",
+      "bufferutil",
+      "sharp"
+    ]
   }
 }

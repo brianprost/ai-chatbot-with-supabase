@@ -6,6 +6,7 @@ export default createEnv({
   server: {
     OPENAI_API_KEY: z.string(),
     POSTGRES_URL: z.string().url(),
+    GROQ_API_KEY: z.string(),
     // AWS_REGION: z.string(),
   },
   clientPrefix: 'NEXT_PUBLIC_',

@@ -1,5 +1,6 @@
 import { openai } from '@ai-sdk/openai';
 import bedrock from './bedrock-client';
+import { groq } from '@ai-sdk/groq';
 import { experimental_wrapLanguageModel as wrapLanguageModel } from 'ai';
 
 import { customMiddleware } from './custom-middleware';
@@ -10,6 +11,7 @@ const providerMap: Record<string, (apiIdentifier: string) => any> = {
   'us.amazon.nova-pro-v1:0': bedrock,
   'gpt-4o': openai,
   'gpt-4o-mini': openai,
+  'llama-3.3-70b-specdec': groq,
 };
 
 export const customModel = (apiIdentifier: string) => {
